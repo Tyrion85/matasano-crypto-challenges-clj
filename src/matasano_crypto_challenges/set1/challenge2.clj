@@ -4,9 +4,9 @@
 ;; Challenge 2
 ;; Write a function that takes two equal-length buffers and produces their XOR combination.
 
-(defn- hexify [b]
+(defn hexify->string [b]
   (apply str (map #(format "%02x" %) b)))
 
 (defn fixed-xor [x y]
-  (hexify
-   (map bit-xor (unhexify-to-bytes x) (unhexify-to-bytes y))))
+  (hexify->string
+   (map bit-xor (unhexify->bytes x) (unhexify->bytes y))))

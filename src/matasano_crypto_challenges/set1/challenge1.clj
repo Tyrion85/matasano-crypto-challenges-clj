@@ -5,14 +5,14 @@
 ;; Challenge 1
 ;; Convert hex to base64
 
-(defn unhexify-to-string [hex]
+(defn- unhexify->string [hex]
   (apply str
     (map
      (fn [[x y]] (char (Integer/parseInt (str x y) 16)))
       (partition 2 hex))))
 
-(defn unhexify-to-bytes [hex]
-  (.getBytes (unhexify-to-string hex)))
+(defn unhexify->bytes [hex]
+  (.getBytes (unhexify->string hex)))
 
 (defn hex-to-base64 [hex]
-  (String. (b64/encode (unhexify-to-bytes hex)) "UTF-8"))
+  (String. (b64/encode (unhexify->bytes hex)) "UTF-8"))
